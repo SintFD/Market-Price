@@ -51,3 +51,35 @@
   display: flex;
   flex-direction: column;
 }
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.devices {
+  cursor: pointer;
+  transition: 1s;
+  padding: 5px;
+  /* margin-top: 20px; */
+}
+.devices:hover {
+  transform: scale(1.1);
+}
+.tel-pk {
+  height: 156px;
+  width: 315px;
+}
+.complect {
+  height: 301px;
+}
+.nout {
+  width: 593px;
+}
+
+.audio {
+  height: 290px;
+}
+/* .garnit{
+  width: 301px;
+  height: 50px;
+} */

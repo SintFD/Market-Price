@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Header from "../home/Header";
 
 function Filter() {
   return (
-    <div>Filter</div>
-  )
+    <div>
+      <Header />
+    </div>
+  );
 }
 
-export default Filter
+export default Filter;
