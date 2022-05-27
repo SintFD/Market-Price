@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Header from "../home/Header";
 
 function Result() {
   return (
-    <div>Result</div>
-  )
+    <div>
+      <Header />
+    </div>
+  );
 }
 
-export default Result
+export default Result;

@@ -20,6 +20,7 @@
 }
 .market-price {
   font-size: 30px;
+  color: white;
 }
 .home__header-button {
   width: 70px;
@@ -38,7 +39,9 @@
   border-radius: 7px;
   background-color: orange;
 }
-
+.header-link{
+  text-decoration:none
+}
 .mainmenu__list-flexboks {
   display: flex;
 }
