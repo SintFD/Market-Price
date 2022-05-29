@@ -7,9 +7,7 @@ import "./reset.css";
 function App() {
   return (
     <div className="app">
-      {/* <Route exact path="/"> */}
       <Main />
-      {/* </Route> */}
     </div>
   );
 }

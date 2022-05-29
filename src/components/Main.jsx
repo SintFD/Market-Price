@@ -8,11 +8,8 @@ function Main() {
   return (
     <div>
       <Route path="/" exact component={Home} />
-      {/* <Home /> */}
       <Route path="/filter" exact component={Filter} />
-      {/* <Filter /> */}
       <Route path="/filter/result" exact component={Result} />
-      {/* <Result /> */}
     </div>
   );
 }

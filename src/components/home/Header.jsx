@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div class="header">
+    <div className="header">
       <div className="container">
         <div className="flex-container">
           <Link className="header-link" to="/">
