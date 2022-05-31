@@ -10,6 +10,7 @@ import img7 from "../images/img7.png";
 import Img8 from "../images/Img8.png";
 
 function Body() {
+  
   const [active, setActive] = useState(false);
   const goToFilter = () => {
     setActive(!active);
@@ -17,60 +18,55 @@ function Body() {
   return (
     <>
       <div className="container">
-        <Link to="/filter">
-          <div className="nav-bar">
-            <div className="mainmenu__list">
-              <div className="mainmenu__list-flexboks">
-                <div className="mainmenu__list-comp-tel">
+        <div className="nav-bar">
+          <div className="mainmenu__list">
+            <div className="mainmenu__list-flexboks">
+              <div className="mainmenu__list-comp-tel">
+                <Link to="/filter">
                   <img
                     onClick={goToFilter}
                     className="devices tel-pk"
                     src={img3}
                     alt=""
                   />
-                  <img
-                    onClick={goToFilter}
-                    className="devices"
-                    src={img4}
-                    alt=""
-                  />
-                </div>
+                </Link>
                 <img
                   onClick={goToFilter}
                   className="devices"
-                  src={img2}
-                  alt=""
-                />
-                <img
-                  onClick={goToFilter}
-                  className="devices complect"
-                  src={img1}
+                  src={img4}
                   alt=""
                 />
               </div>
+              <img onClick={goToFilter} className="devices" src={img2} alt="" />
+              <img
+                onClick={goToFilter}
+                className="devices complect"
+                src={img1}
+                alt=""
+              />
+            </div>
 
-              <div className="mainmenu__list-flexboks">
-                <div>
-                  <img
-                    onClick={goToFilter}
-                    className="devices nout"
-                    src={img7}
-                    alt=""
-                  />
-                </div>
-                <div>
-                  {/* <img className="devices garnit" src={Img8} alt="" /> */}
-                  <img
-                    onClick={goToFilter}
-                    className="devices audio "
-                    src={img6}
-                    alt=""
-                  />
-                </div>
+            <div className="mainmenu__list-flexboks">
+              <div>
+                <img
+                  onClick={goToFilter}
+                  className="devices nout"
+                  src={img7}
+                  alt=""
+                />
+              </div>
+              <div>
+                {/* <img className="devices garnit" src={Img8} alt="" /> */}
+                <img
+                  onClick={goToFilter}
+                  className="devices audio "
+                  src={img6}
+                  alt=""
+                />
               </div>
             </div>
           </div>
-        </Link>
+        </div>
       </div>
     </>
   );

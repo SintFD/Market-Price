@@ -11,7 +11,7 @@
   height: 50px;
 }
 .container {
-  width: 80%;
+  padding-top: 10px;
 }
 .flex-container {
   display: flex;
@@ -39,8 +39,8 @@
   border-radius: 7px;
   background-color: orange;
 }
-.header-link{
-  text-decoration:none
+.header-link {
+  text-decoration: none;
 }
 .mainmenu__list-flexboks {
   display: flex;
@@ -63,7 +63,9 @@
   cursor: pointer;
   transition: 1s;
   padding: 5px;
-  /* margin-top: 20px; */
+  border-radius: 20px;
+  /* margin-top: 10px; */
+  /* margin: 5px; */
 }
 .devices:hover {
   transform: scale(1.1);
