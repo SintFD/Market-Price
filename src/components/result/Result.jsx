@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../home/Header";
 import { useSelector } from "react-redux";
 import { findModelSelector } from "../../redux-manager/result/selectors";
+import { getDataSelector } from "../../redux-manager/Filter/selector";
 
 function Result() {
   const localArr = [
@@ -48,23 +49,21 @@ function Result() {
       logo: "MaxiAz",
     },
   ];
+  const allPhonesArr = useSelector(getDataSelector);
   const inpValue = useSelector(findModelSelector);
-  const show = () => {
-    console.log(inpValue, "inpval");
-  };
   return (
     <div>
       <Header />
       <div>
-        {localArr
-          .filter((el) => el.company === inpValue)
+        {allPhonesArr
+          // .filter((el) => el.company === inpValue)
           .map((item) => {
             return (
               <div key={item}>
                 <div>
                   <p>{item.company}</p> <br />
-                  <p>{item.model}</p> <br />
-                  <p>{item.cost}</p> <br />
+                  <p>{item.name}</p> <br />
+                  <p>{item.price}</p> <br />
                   <p>{item.logo}</p>
                 </div>
               </div>

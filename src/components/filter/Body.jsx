@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "./Filter.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { takeFilterValue } from "../../redux-manager/Filter/action";
 
 function Body() {
-  const [value, setValue] = useState("");
+  const dispatch = useDispatch();
+
   const changeValue = (e) => {
-    setValue(e.target.innerText);
-    console.log(value);
+    dispatch(takeFilterValue(e.target.innerText));
+    console.log(e.target.innerText);
   };
   return (
     <div className="container__all-info">
@@ -34,39 +37,19 @@ function Body() {
         </div>
         <div className="all-info__companies">
           <Link className="header-link" to="/filter/result">
-            <div
-              onClick={changeValue}
-              value="apple"
-              className="all-info__companies-item"
-            >
+            <div onClick={changeValue} className="all-info__companies-item">
               Apple
             </div>
-            <div
-              onClick={changeValue}
-              value="xiaomi"
-              className="all-info__companies-item"
-            >
+            <div onClick={changeValue} className="all-info__companies-item">
               Xiaomi
             </div>
-            <div
-              onClick={changeValue}
-              value="honor"
-              className="all-info__companies-item"
-            >
+            <div onClick={changeValue} className="all-info__companies-item">
               Honor
             </div>
-            <div
-              onClick={changeValue}
-              value="realme"
-              className="all-info__companies-item"
-            >
+            <div onClick={changeValue} className="all-info__companies-item">
               Realme
             </div>
-            <div
-              onClick={changeValue}
-              value="samsung"
-              className="all-info__companies-item"
-            >
+            <div onClick={changeValue} className="all-info__companies-item">
               Samsung
             </div>
           </Link>
