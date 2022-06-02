@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "./Filter.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { takeFilterValue } from "../../redux-manager/Filter/action";
 
 function Body() {
-  const [value, setValue] = useState("");
+  const dispatch = useDispatch();
+
   const changeValue = (e) => {
-    setValue(e.target.innerText);
-    console.log(value);
+    dispatch(takeFilterValue(e.target.innerText));
+    console.log(e.target.innerText);
   };
   return (
     <div className="container__all-info">
