@@ -1,74 +1,47 @@
-import React from "react";
 import Header from "../home/Header";
+import "./Result.css";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { findModelSelector } from "../../redux-manager/result/selectors";
 import { getDataSelector } from "../../redux-manager/Filter/selector";
 
 function Result() {
-  const localArr = [
-    {
-      company: "apple",
-      cost: "900",
-      model: "Iphone 13 Pro",
-      // url: '',
-      logo: "Kontakt",
-    },
-    {
-      company: "samsung",
-      cost: "800",
-      model: "Samsung S22",
-      // url: '',
-      logo: "MaxiAz",
-    },
-    {
-      company: "samsung",
-      cost: "700",
-      model: "Samsung NOTE10",
-      // url: '',
-      logo: "IRSHAD",
-    },
-    {
-      company: "apple",
-      cost: "1000",
-      model: "Iphone 12 Pro",
-      // url: '',
-      logo: "Kontakt",
-    },
-    {
-      company: "samsung",
-      cost: "850",
-      model: "Samsung S20",
-      // url: '',
-      logo: "IRSHAD",
-    },
-    {
-      company: "apple",
-      cost: "900",
-      model: "Iphone 11 s",
-      // url: '',
-      logo: "MaxiAz",
-    },
-  ];
   const allPhonesArr = useSelector(getDataSelector);
+  const [clicked, setCLicked] = useState(false);
+  const changeState = () => {
+    clicked
+      ? allPhonesArr.sort((a, b) => a.price - b.price)
+      : allPhonesArr.sort((a, b) => b.price - a.price);
+    setCLicked(!clicked);
+  };
+  const logoArr = ["maxi.az", "irshad.az"];
   const inpValue = useSelector(findModelSelector);
   return (
     <div>
       <Header />
-      <div>
-        {allPhonesArr
-          // .filter((el) => el.company === inpValue)
-          .map((item) => {
-            return (
-              <div key={item}>
-                <div>
-                  <p>{item.company}</p> <br />
-                  <p>{item.name}</p> <br />
-                  <p>{item.price}</p> <br />
+      <div className="result__main-elements">
+        <div className="result__main-btn-container">
+          <button onClick={changeState} className="result__main-compare">
+            Сравнить по цене
+          </button>
+        </div>
+        {
+          // clicked
+          // ? allPhonesArr.sort((a,b)=>a.price - b.price)
+          //   :
+          allPhonesArr
+            // .filter((el) => el.company === inpValue)
+            .map((item) => {
+              return (
+                <div className="result__main-elemets-element">
                   <p>{item.logo}</p>
+                  <p className="result__name">{item.name}</p> <br />
+                  <img className="result__image" src={item.pictureURL} />
+                  <p className="result__price">{item.price} Azn</p> <br />
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+        }
       </div>
     </div>
   );

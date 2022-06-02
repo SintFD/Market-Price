@@ -7,14 +7,11 @@ let phonesArr = [];
 
 const irshad = (brand) => {
   return axios
-    .get(
-      `https://irshad.az/telefon-ve-aksesuarlar/mobil-telefonlar?q=${brand}`,
-      {
-        headers: {
-          "X-Requested-With": "XMLHttpRequest",
-        },
-      }
-    )
+    .get(`https://irshad.az/telefon-ve-aksesuarlar/mobil-telefonlar/${brand}`, {
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    })
     .then((html) => {
       html.data.product_list.forEach((el) => {
         phonesArr.push({
@@ -44,7 +41,7 @@ const maxi = (brand) => {
       html.data.catalogSectionList.items.forEach((el) => {
         phonesArr.push({
           name: el.name,
-          pictureURL: "maxi.az" + el.picture.src,
+          pictureURL: "https://maxi.az" + el.picture.src,
           price: el.price.price,
           company: brand,
           logo: "maxi.az",
