@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getModel } from "../../redux-manager/result/actions";
 
 function Header() {
   const [value, SetValue] = useState("");
+  const dispath = useDispatch();
   const tankeValue = (e) => {
     SetValue(e.target.value);
   };
   const showValue = () => {
     console.log(value);
+    dispath(getModel(value));
   };
 
   const submiting = (e) => {
@@ -27,7 +31,7 @@ function Header() {
               type="text"
               width={400}
             />
-            <Link className="header-link" to="/filte/result">
+            <Link className="header-link" to="/filter/result">
               <button
                 onClick={showValue}
                 type="button"

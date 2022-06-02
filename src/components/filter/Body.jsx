@@ -43,6 +43,13 @@ function Body() {
             </div>
             <div
               onClick={changeValue}
+              value="xiaomi"
+              className="all-info__companies-item"
+            >
+              Xiaomi
+            </div>
+            <div
+              onClick={changeValue}
               value="samsung"
               className="all-info__companies-item"
             >
