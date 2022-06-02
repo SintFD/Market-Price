@@ -64,17 +64,11 @@
   transition: 1s;
   padding: 5px;
   border-radius: 20px;
-  /* margin-top: 10px; */
-  /* margin: 5px; */
 }
 .devices:hover {
   transform: scale(1.1);
 }
-.test{
-  background-color: black;
-  width: 30px;
-  height: 30px;
-}
+
 .tel-pk {
   height: 156px;
   width: 315px;

@@ -56,7 +56,6 @@ function Result() {
     <div>
       <Header />
       <div>
-        <button className="test" onClick={show}></button>
         {localArr
           .filter((el) => el.company === inpValue)
           .map((item) => {
