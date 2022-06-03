@@ -22,12 +22,12 @@ function Header() {
       <div className="container">
         <div className="flex-container">
           <Link className="header-link" to="/">
-            <div className="market-price">Market Price</div>
+            <div className="market-price"><div className="market">Market</div> <div className="price">Price</div></div>
           </Link>
-          <form onSubmit={submiting}>
+          <form className="header__form-flex" onSubmit={submiting}>
             <input
               onChange={tankeValue}
-              className="home__header-input"
+              className="home__header-input home__header"
               type="text"
               width={400}
             />
@@ -35,7 +35,7 @@ function Header() {
               <button
                 onClick={showValue}
                 type="button"
-                className="home__header-button"
+                className="home__header-button home__header"
               >
                 Искать
               </button>
