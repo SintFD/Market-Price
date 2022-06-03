@@ -52,6 +52,34 @@ const maxi = (brand) => {
     });
 };
 
+const kontakt = (brand) => {
+  return axios
+    .get(
+      `https://kontakt.az/_next/data/ZZZcaCNlVGMJw6qrZD8ro/ru/telefonlar/mobil-telefonlar/${brand}-mobil-telefonlar.json`,
+      {
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+        },
+      }
+    )
+    .then((html) => {
+      phonesArr.push({ a: html.data.pageProps.initialState.subCategories.server.items });
+      // html.data
+      // html.data.catalogSectionList.items.forEach((el) => {
+      //   phonesArr.push({
+      //     name: el.name,
+      //     pictureURL: "https://maxi.az" + el.picture.src,
+      //     price: el.price.price,
+      //     company: brand,
+      //     logo: "maxi.az",
+      //     id: el.id,
+      //   });
+      // });
+      console.log("kontakt");
+      console.log(html.data)
+    });
+};
+
 app.use(
   cors({
     origin: "*",
@@ -60,7 +88,7 @@ app.use(
 
 app.get("/user/:brand", function (req, res) {
   const brand = req.params.brand.split(" ").join("");
-  Promise.all([maxi(brand), irshad(brand)]).then(() => {
+  Promise.all([maxi(brand), irshad(brand)], kontakt(brand)).then(() => {
     res.json(phonesArr);
     phonesArr = [];
   });
@@ -69,3 +97,5 @@ app.get("/user/:brand", function (req, res) {
 app.listen(3001, function () {
   console.log("Example app listening on port 3001!");
 });
+
+// https://kontakt.az/_next/data/ZZZcaCNlVGMJw6qrZD8ro/ru/telefonlar/mobil-telefonlar/apple-mobil-telefonlar.json?dynamicRouts=telefonlar&dynamicRouts=mobil-telefonlar&dynamicRouts=apple-mobil-telefonlar

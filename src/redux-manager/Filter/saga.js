@@ -11,7 +11,7 @@ function* workerCart(action) {
   try {
     const data = yield call(ProductsInfo, action.payload);
     console.log(data)
-    yield put(getPhonesAction(data));
+    // yield put(getPhonesAction(data));
   } catch (err) {
     console.error("ERROR", err);
   }
