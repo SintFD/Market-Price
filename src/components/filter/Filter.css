@@ -8,6 +8,7 @@
 .all-info {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 800px;
   height: 200px;
   background-color: rgb(238, 218, 218);
@@ -39,4 +40,9 @@
 .all-info__companies-item:hover {
   opacity: 1;
   color: rgb(212, 212, 48);
+}
+.all-info__cost-choose-flexbox{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: start; */
 }

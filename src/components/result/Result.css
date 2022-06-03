@@ -5,19 +5,34 @@
 .result__price {
   width: 100px;
   font-weight: 700;
-  text-align: center;
+  text-align: end;
 }
 .result__main-elements {
   display: flex;
   flex-wrap: wrap;
 }
+.result__element-model {
+  font-size: 17px;
+  font-weight: 500;
+  width: 140px;
+}
 .result__main-elemets-element {
+  padding: 20px;
+  margin: 40px 0 0 70px;
   flex-direction: column;
+  width: 26%;
+  height: 340px;
+  border: 0.5px gray solid;
+  border-radius: 20px;
+  justify-content: center;
+}
+.result__main-flexbox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .result__name {
-  width: 90px;
-  font-size: 13px;
-  line-height: 15px;
+  width: 75px;
 }
 .result__main-compare {
   width: 150px;

@@ -1,6 +1,6 @@
 import Header from "../home/Header";
 import "./Result.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { findModelSelector } from "../../redux-manager/result/selectors";
 import { getDataSelector } from "../../redux-manager/Filter/selector";
@@ -14,8 +14,18 @@ function Result() {
       : allPhonesArr.sort((a, b) => b.price - a.price);
     setCLicked(!clicked);
   };
-  const logoArr = ["maxi.az", "irshad.az"];
-  const inpValue = useSelector(findModelSelector);
+
+  const btnValue = useSelector(getDataSelector);
+  const getLogoUrl = (item) => {
+    switch (item) {
+      case "maxi.az":
+        return "https://www.rabitabank.com/uploads/posts/2021/02/maxiaz.png";
+      case "irshad.az":
+        return "https://upload.wikimedia.org/wikipedia/commons/a/a4/Irshad_logo_%283%29.png";
+      case "kontakt.az":
+        return "https://1news.az/images/2018/11/07/20181107050325694/beb44fc9-9483-4a82-9879-fc247d224d60.jpg?2021-02-17+09%3A23%3A27";
+    }
+  };
   return (
     <div>
       <Header />
@@ -25,23 +35,21 @@ function Result() {
             Сравнить по цене
           </button>
         </div>
-        {
-          // clicked
-          // ? allPhonesArr.sort((a,b)=>a.price - b.price)
-          //   :
-          allPhonesArr
-            // .filter((el) => el.company === inpValue)
-            .map((item) => {
-              return (
-                <div className="result__main-elemets-element">
-                  <p>{item.logo}</p>
-                  <p className="result__name">{item.name}</p> <br />
-                  <img className="result__image" src={item.pictureURL} />
-                  <p className="result__price">{item.price} Azn</p> <br />
+        {allPhonesArr
+          // .filter((el) => el.price >= btnValue)
+          .map((item) => {
+            return (
+              <div className="result__main-elemets-element">
+                <div className="result__main-flexbox">
+                  <img src={getLogoUrl(item.logo)} className="result__name" />
+                  <div className="result__element-model">{item.name}</div>
                 </div>
-              );
-            })
-        }
+                <br />
+                <img className="result__image" src={item.pictureURL} />
+                <p className="result__price">{item.price} Azn</p> <br />
+              </div>
+            );
+          })}
       </div>
     </div>
   );
