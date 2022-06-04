@@ -1,17 +1,18 @@
 .container__all-info {
-  /* width: 80%;
-  height: 1000px; */
+  height: 90vh;
+  display: flex;
   justify-content: center;
-  align-items: center;
-  /* padding: 100px; */
+  /* align-items: flex-start; */
 }
 .all-info {
   display: flex;
   justify-content: space-around;
+  margin-top: 100px;
   align-items: center;
-  width: 800px;
-  height: 200px;
+  width: 900px;
+  height: 300px;
   background-color: rgb(238, 218, 218);
+  border-radius: 20px;
 }
 .all-info__cost-inputs {
   display: flex;
@@ -19,13 +20,14 @@
 .all-info__cost-inputs-value {
   width: 40px;
   height: 20px;
-  margin-left: 10px;    
-}   
+  margin-left: 10px;
+}
 .all-info__cost-choose {
   font-size: 17px;
   cursor: pointer;
   text-decoration: underline;
   padding: 5px;
+  background-color: rgb(238, 218, 218);
 }
 .all-info__cost-choose:hover {
   color: rgb(212, 212, 48);
@@ -41,7 +43,7 @@
   opacity: 1;
   color: rgb(212, 212, 48);
 }
-.all-info__cost-choose-flexbox{
+.all-info__cost-choose-flexbox {
   display: flex;
   flex-direction: column;
   /* justify-content: start; */

@@ -3,6 +3,7 @@
   height: 220px;
 }
 .result__price {
+  margin-top: 10px;
   width: 100px;
   font-weight: 700;
   text-align: end;
@@ -10,19 +11,25 @@
 .result__main-elements {
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 40px;
 }
 .result__element-model {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
-  width: 140px;
+  width: 180px;
+  margin-left: 10px;
+  /* height: 30px;
+  overflow: hidden; */
 }
 .result__main-elemets-element {
   padding: 20px;
   margin: 40px 0 0 70px;
   flex-direction: column;
-  width: 26%;
-  height: 340px;
-  border: 0.5px gray solid;
+  /* background-color: rgb(161, 161, 216); */
+  width: 21%;
+  height: 350px;
+  /* border: 0.5px gray solid; */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 20px;
   justify-content: center;
 }
