@@ -39,7 +39,7 @@ function Result() {
           // .filter((el) => el.price >= btnValue)
           .map((item) => {
             return (
-              <div className="result__main-elemets-element">
+              <div key={item.name} className="result__main-elemets-element">
                 <div className="result__main-flexbox">
                   <img src={getLogoUrl(item.logo)} className="result__name" />
                   <div className="result__element-model">{item.name}</div>

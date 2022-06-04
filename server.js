@@ -63,20 +63,24 @@ const kontakt = (brand) => {
       }
     )
     .then((html) => {
-      phonesArr.push({ a: html.data.pageProps.initialState.subCategories.server.items });
+      // phonesArr.push({ a: html.data.pageProps.initialState.subCategories.server.items });
       // html.data
-      // html.data.catalogSectionList.items.forEach((el) => {
-      //   phonesArr.push({
-      //     name: el.name,
-      //     pictureURL: "https://maxi.az" + el.picture.src,
-      //     price: el.price.price,
-      //     company: brand,
-      //     logo: "maxi.az",
-      //     id: el.id,
-      //   });
-      // });
+      html.data.pageProps.initialState.subCategories.server.items.forEach(
+        (el) => {
+          phonesArr.push({
+            name: el.name,
+            pictureURL: el.image.url,
+            price: +el.additional_price.price_credit
+              .substring(0, el.additional_price.price_credit.length - 5)
+              .split(".")
+              .join(""),
+            company: brand,
+            logo: "kontakt.az",
+            id: el.id,
+          });
+        }
+      );
       console.log("kontakt");
-      console.log(html.data)
     });
 };
 
