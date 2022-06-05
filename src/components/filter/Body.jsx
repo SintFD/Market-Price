@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import {
   getValuesAction,
   takeFilterValue,
-} from "../../redux-manager/Filter/action";
+} from "../../redux-manager/Filter/actions";
 
 function Body() {
   const dispatch = useDispatch();

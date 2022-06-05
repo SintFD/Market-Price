@@ -10,7 +10,6 @@ function Header() {
     SetValue(e.target.value);
   };
   const showValue = () => {
-    console.log(value);
     dispath(getModel(value));
   };
 

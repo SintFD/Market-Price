@@ -35,24 +35,22 @@ function Result() {
             Сравнить по цене
           </button>
         </div>
-        {allPhonesArr
-          .map((item) => {
-            return (
-              <div key={item.name} className="result__main-elemets-element">
-                <div className="result__main-flexbox">
-                  <img src={getLogoUrl(item.logo)} className="result__name" />
-                  <div className="result__element-model">{item.name}</div>
-                </div>
-                <br />
-                <img className="result__image" src={item.pictureURL} />
-                <p className="result__price">{item.price} Azn</p> <br />
+        {allPhonesArr.map((item) => {
+          return (
+            <div key={item.id} className="result__main-elemets-element">
+              <div className="result__main-flexbox">
+                <img src={getLogoUrl(item.logo)} className="result__name" />
+                <div className="result__element-model">{item.name}</div>
               </div>
-            );
-          })}
+              <br />
+              <img className="result__image" src={item.pictureURL} />
+              <p className="result__price">{item.price} Azn</p> <br />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
-  
 }
 
 export default Result;

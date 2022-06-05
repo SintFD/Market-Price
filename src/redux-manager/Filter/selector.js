@@ -1,1 +1,1 @@
-export const getDataSelector = (state) => state.filterReducer.phones;
+export const getDataSelector = (state) => state.filterReducer.products;

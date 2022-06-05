@@ -32,6 +32,7 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 20px;
   justify-content: center;
+  overflow: hidden;
 }
 .result__main-flexbox {
   display: flex;

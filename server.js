@@ -23,7 +23,28 @@ const irshad = (brand) => {
           price: el.price,
         });
       });
-      console.log("irs");
+    });
+};
+
+const searchIrshad = (search) => {
+  return axios
+    .get(`https://irshad.az/mehsullar?q=${search}&simple=true`, {
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    })
+    .then((html) => {
+      html.data.product_list.forEach((el) => {
+        phonesArr.push({
+          name: el.name,
+          pictureURL: el.image,
+          id: el.id,
+          logo: "irshad.az",
+          // company: brand,
+          price: el.price,
+        });
+      });
+      // phonesArr.push(html.data.product_list);
     });
 };
 
@@ -48,14 +69,13 @@ const maxi = (brand) => {
           id: el.id,
         });
       });
-      console.log("maxi");
     });
 };
 
-const searchMaxi = (brand) => {
+const searchMaxi = (search) => {
   return axios
     .get(
-      `https://maxi.az/ajax.php?action=search&ajax=y&LANGUAGE_ID=az&q=iphone+13+pro`,
+      `https://maxi.az/ru/search/filter/clear/apply/?q=${search}&PAGEN_1=1&api=y`,
       {
         headers: {
           "X-Requested-With": "XMLHttpRequest",
@@ -63,8 +83,7 @@ const searchMaxi = (brand) => {
       }
     )
     .then((html) => {
-      phonesArr.push(html.data.products.items);
-      html.data.products.items.forEach((el) => {
+      html.data.catalogSectionList.items.forEach((el) => {
         phonesArr.push({
           name: el.name,
           pictureURL: "https://maxi.az" + el.picture.src,
@@ -73,7 +92,6 @@ const searchMaxi = (brand) => {
           id: el.id,
         });
       });
-      console.log("searchMaxi");
     });
 };
 
@@ -88,8 +106,6 @@ const kontakt = (brand) => {
       }
     )
     .then((html) => {
-      // phonesArr.push({ a: html.data.pageProps.initialState.subCategories.server.items });
-      // html.data
       html.data.pageProps.initialState.subCategories.server.items.forEach(
         (el) => {
           phonesArr.push({
@@ -105,7 +121,32 @@ const kontakt = (brand) => {
           });
         }
       );
-      console.log("kontakt");
+    });
+};
+
+const searchKontakt = (search) => {
+  return axios
+    .get(
+      `https://kontakt.az/graphql?query=+query+ProductSearch(+$pageSize:+Int!,+$currentPage:+Int!,+$search:+String!,+$sort:+ProductAttributeSortInput+)+%7B+products(+pageSize:+$pageSize,+currentPage:+$currentPage,+search:+$search,+sort:+$sort+)+%7B+total_count+page_info+%7B+current_page+page_size+total_pages+%7D+items+%7B+id+sku+name+review_count+stock_status+special_price+product_tags+url_key+category_products_general_attributes+%7B+label+value+%7D+mp_label_data+%7B+name+enabled+label_image+label_template+label_css+label_position+%7D+categories+%7B+breadcrumbs+%7B+item_title+item_url_path+%7D+%7D+media_gallery+%7B+disabled+label+position+url+%7D+image+%7B+url+%7D+additional_price+%7B+discount+price_credit+price_pay_now+%7D+attribute_groups+%7B+attributes+%7B+code+id+label+value+%7D+id+name+%7D+general_attributes+%7B+code+id+image+label+value+%7D+%7D+%7D+%7D+&variables=%7B%22pageSize%22:20,%22currentPage%22:1,%22search%22:%22${search}%22,%22locale%22:%22ru%22%7D`,
+      {
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+        },
+      }
+    )
+    .then((html) => {
+      html.data.data.products.items.forEach((el) => {
+        phonesArr.push({
+          name: el.name,
+          pictureURL: el.image.url,
+          price: +el.additional_price.price_credit
+            .substring(0, el.additional_price.price_credit.length - 5)
+            .split(".")
+            .join(""),
+          logo: "kontakt.az",
+          id: el.id,
+        });
+      });
     });
 };
 
@@ -125,8 +166,12 @@ app.get("/product/:brand", function (req, res) {
 
 app.get("/searchProduct/:search", function (req, res) {
   const search = req.params.search.replace(/ /gi, "+");
-  console.log(search);
-  Promise.all([searchMaxi(search)]).then(() => {
+
+  Promise.all([
+    searchMaxi(search),
+    searchIrshad(search),
+    searchKontakt(search),
+  ]).then(() => {
     res.json(phonesArr);
     phonesArr = [];
   });
