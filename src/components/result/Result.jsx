@@ -53,6 +53,7 @@ function Result() {
       </div>
     </div>
   );
+  
 }
 
 export default Result;
