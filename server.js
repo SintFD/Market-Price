@@ -52,6 +52,31 @@ const maxi = (brand) => {
     });
 };
 
+const searchMaxi = (brand) => {
+  return axios
+    .get(
+      `https://maxi.az/ajax.php?action=search&ajax=y&LANGUAGE_ID=az&q=iphone+13+pro`,
+      {
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+        },
+      }
+    )
+    .then((html) => {
+      phonesArr.push(html.data.products.items);
+      html.data.products.items.forEach((el) => {
+        phonesArr.push({
+          name: el.name,
+          pictureURL: "https://maxi.az" + el.picture.src,
+          price: el.price.price,
+          logo: "maxi.az",
+          id: el.id,
+        });
+      });
+      console.log("searchMaxi");
+    });
+};
+
 const kontakt = (brand) => {
   return axios
     .get(
@@ -90,9 +115,18 @@ app.use(
   })
 );
 
-app.get("/user/:brand", function (req, res) {
-  const brand = req.params.brand.split(" ").join("");
+app.get("/product/:brand", function (req, res) {
+  const brand = req.params.brand;
   Promise.all([maxi(brand), irshad(brand)], kontakt(brand)).then(() => {
+    res.json(phonesArr);
+    phonesArr = [];
+  });
+});
+
+app.get("/searchProduct/:search", function (req, res) {
+  const search = req.params.search.replace(/ /gi, "+");
+  console.log(search);
+  Promise.all([searchMaxi(search)]).then(() => {
     res.json(phonesArr);
     phonesArr = [];
   });
@@ -101,5 +135,3 @@ app.get("/user/:brand", function (req, res) {
 app.listen(3001, function () {
   console.log("Example app listening on port 3001!");
 });
-
-// https://kontakt.az/_next/data/ZZZcaCNlVGMJw6qrZD8ro/ru/telefonlar/mobil-telefonlar/apple-mobil-telefonlar.json?dynamicRouts=telefonlar&dynamicRouts=mobil-telefonlar&dynamicRouts=apple-mobil-telefonlar

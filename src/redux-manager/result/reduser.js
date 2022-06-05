@@ -6,8 +6,8 @@ const initialValues = {
 
 const modelReduser = (state = initialValues, action) => {
   switch (action.type) {
-    case FIND_MODEL:
-      return { ...state, models: action.payload };
+    // case FIND_MODEL:
+    //   return { ...state, models: action.payload };
     // case DELETE_MOVIE:
     //   return {
     //     ...state,

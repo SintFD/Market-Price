@@ -36,7 +36,6 @@ function Result() {
           </button>
         </div>
         {allPhonesArr
-          // .filter((el) => el.price >= btnValue)
           .map((item) => {
             return (
               <div key={item.name} className="result__main-elemets-element">
