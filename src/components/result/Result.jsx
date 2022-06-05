@@ -2,7 +2,6 @@ import Header from "../home/Header";
 import "./Result.css";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { findModelSelector } from "../../redux-manager/result/selectors";
 import { getDataSelector } from "../../redux-manager/Filter/selector";
 
 function Result() {
@@ -15,7 +14,11 @@ function Result() {
     setCLicked(!clicked);
   };
 
-  const btnValue = useSelector(getDataSelector);
+  let counter = 0;
+
+  const idGenerator = () => {
+    counter = counter + 1;
+  };
   const getLogoUrl = (item) => {
     switch (item) {
       case "maxi.az":
@@ -37,7 +40,7 @@ function Result() {
         </div>
         {allPhonesArr.map((item) => {
           return (
-            <div key={item.id} className="result__main-elemets-element">
+            <div key={counter} className="result__main-elemets-element">
               <div className="result__main-flexbox">
                 <img src={getLogoUrl(item.logo)} className="result__name" />
                 <div className="result__element-model">{item.name}</div>
@@ -45,6 +48,7 @@ function Result() {
               <br />
               <img className="result__image" src={item.pictureURL} />
               <p className="result__price">{item.price} Azn</p> <br />
+              {idGenerator()}
             </div>
           );
         })}

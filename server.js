@@ -13,16 +13,17 @@ const irshad = (brand) => {
       },
     })
     .then((html) => {
-      html.data.product_list.forEach((el) => {
-        phonesArr.push({
-          name: Object.values(el.configurations)[0].name,
-          pictureURL: Object.values(el.configurations)[0].image,
-          id: el.id,
-          logo: "irshad.az",
-          company: brand,
-          price: el.price,
+      html.data.product_list &&
+        html.data.product_list.forEach((el) => {
+          phonesArr.push({
+            name: Object.values(el.configurations)[0].name,
+            pictureURL: Object.values(el.configurations)[0].image,
+            id: el.id,
+            logo: "irshad.az",
+            company: brand,
+            price: el.price,
+          });
         });
-      });
     });
 };
 
@@ -34,16 +35,17 @@ const searchIrshad = (search) => {
       },
     })
     .then((html) => {
-      html.data.product_list.forEach((el) => {
-        phonesArr.push({
-          name: el.name,
-          pictureURL: el.image,
-          id: el.id,
-          logo: "irshad.az",
-          // company: brand,
-          price: el.price,
+      html.data.product_list &&
+        html.data.product_list.forEach((el) => {
+          phonesArr.push({
+            name: el.name,
+            pictureURL: el.image,
+            id: el.id,
+            logo: "irshad.az",
+            // company: brand,
+            price: el.price,
+          });
         });
-      });
       // phonesArr.push(html.data.product_list);
     });
 };
@@ -59,16 +61,17 @@ const maxi = (brand) => {
       }
     )
     .then((html) => {
-      html.data.catalogSectionList.items.forEach((el) => {
-        phonesArr.push({
-          name: el.name,
-          pictureURL: "https://maxi.az" + el.picture.src,
-          price: el.price.price,
-          company: brand,
-          logo: "maxi.az",
-          id: el.id,
+      html.data.catalogSectionList.items &&
+        html.data.catalogSectionList.items.forEach((el) => {
+          phonesArr.push({
+            name: el.name,
+            pictureURL: "https://maxi.az" + el.picture.src,
+            price: el.price.price,
+            company: brand,
+            logo: "maxi.az",
+            id: el.id,
+          });
         });
-      });
     });
 };
 
@@ -83,15 +86,16 @@ const searchMaxi = (search) => {
       }
     )
     .then((html) => {
-      html.data.catalogSectionList.items.forEach((el) => {
-        phonesArr.push({
-          name: el.name,
-          pictureURL: "https://maxi.az" + el.picture.src,
-          price: el.price.price,
-          logo: "maxi.az",
-          id: el.id,
+      html.data.catalogSectionList.items &&
+        html.data.catalogSectionList.items.forEach((el) => {
+          phonesArr.push({
+            name: el.name,
+            pictureURL: "https://maxi.az" + el.picture.src,
+            price: el.price.price,
+            logo: "maxi.az",
+            id: el.id,
+          });
         });
-      });
     });
 };
 
@@ -106,21 +110,22 @@ const kontakt = (brand) => {
       }
     )
     .then((html) => {
-      html.data.pageProps.initialState.subCategories.server.items.forEach(
-        (el) => {
-          phonesArr.push({
-            name: el.name,
-            pictureURL: el.image.url,
-            price: +el.additional_price.price_credit
-              .substring(0, el.additional_price.price_credit.length - 5)
-              .split(".")
-              .join(""),
-            company: brand,
-            logo: "kontakt.az",
-            id: el.id,
-          });
-        }
-      );
+      html.data.pageProps.initialState.subCategories.server.items &&
+        html.data.pageProps.initialState.subCategories.server.items.forEach(
+          (el) => {
+            phonesArr.push({
+              name: el.name,
+              pictureURL: el.image.url,
+              price: +el.additional_price.price_credit
+                .substring(0, el.additional_price.price_credit.length - 5)
+                .split(".")
+                .join(""),
+              company: brand,
+              logo: "kontakt.az",
+              id: el.id,
+            });
+          }
+        );
     });
 };
 
@@ -135,18 +140,19 @@ const searchKontakt = (search) => {
       }
     )
     .then((html) => {
-      html.data.data.products.items.forEach((el) => {
-        phonesArr.push({
-          name: el.name,
-          pictureURL: el.image.url,
-          price: +el.additional_price.price_credit
-            .substring(0, el.additional_price.price_credit.length - 5)
-            .split(".")
-            .join(""),
-          logo: "kontakt.az",
-          id: el.id,
+      html.data.data.products.items &&
+        html.data.data.products.items.forEach((el) => {
+          phonesArr.push({
+            name: el.name,
+            pictureURL: el.image.url,
+            price: +el.additional_price.price_credit
+              .substring(0, el.additional_price.price_credit.length - 5)
+              .split(".")
+              .join(""),
+            logo: "kontakt.az",
+            id: el.id,
+          });
         });
-      });
     });
 };
 
