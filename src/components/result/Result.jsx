@@ -3,9 +3,12 @@ import "./Result.css";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getDataSelector } from "../../redux-manager/Filter/selector";
+import { findModelSelector } from "../../redux-manager/result/selectors";
 
 function Result() {
   const allPhonesArr = useSelector(getDataSelector);
+  let valuesFromFilter = useSelector(findModelSelector);
+  // useEffect(console.log(allPhonesArr))
   const [clicked, setCLicked] = useState(false);
   const changeState = () => {
     clicked
@@ -38,20 +41,22 @@ function Result() {
             Сравнить по цене
           </button>
         </div>
-        {allPhonesArr.map((item) => {
-          return (
-            <div key={counter} className="result__main-elemets-element">
-              <div className="result__main-flexbox">
-                <img src={getLogoUrl(item.logo)} className="result__name" />
-                <div className="result__element-model">{item.name}</div>
+        {allPhonesArr
+          .filter((el) => el.price > valuesFromFilter)
+          .map((item) => {
+            return (
+              <div key={counter} className="result__main-elemets-element">
+                <div className="result__main-flexbox">
+                  <img src={getLogoUrl(item.logo)} className="result__name" />
+                  <div className="result__element-model">{item.name}</div>
+                </div>
+                <br />
+                <img className="result__image" src={item.pictureURL} />
+                <p className="result__price">{item.price} Azn</p> <br />
+                {idGenerator()}
               </div>
-              <br />
-              <img className="result__image" src={item.pictureURL} />
-              <p className="result__price">{item.price} Azn</p> <br />
-              {idGenerator()}
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     </div>
   );

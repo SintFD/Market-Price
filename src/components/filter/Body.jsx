@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Filter.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {
-  getValuesAction,
-  takeFilterValue,
-} from "../../redux-manager/Filter/actions";
+import { takeFilterValue } from "../../redux-manager/Filter/actions";
+import { getValuesAction } from "../../redux-manager/result/actions";
 
 function Body() {
   const dispatch = useDispatch();
 
   const changeValue = (e) => {
     dispatch(takeFilterValue(e.target.innerText));
-    console.log(e.target.innerText);
+    // console.log(e.target.innerText);
   };
   const filterByValue = (e) => {
     dispatch(getValuesAction(e.target.value));

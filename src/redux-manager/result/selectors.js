@@ -1,1 +1,1 @@
-export const findModelSelector = (state) => state.modelReduser.models;
+export const findModelSelector = (state) => state.resultReduser.models;

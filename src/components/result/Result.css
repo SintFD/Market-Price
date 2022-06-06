@@ -1,6 +1,6 @@
 .result__image {
-  /* width: 200px; */
-  height: 220px;
+  max-width: 230px;
+  max-height: 220px;
 }
 .result__price {
   margin-top: 10px;

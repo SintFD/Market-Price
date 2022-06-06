@@ -1,11 +1,13 @@
-import { FIND_MODEL } from "../constants";
+import { FIND_MODEL ,GET_VALUES} from "../constants";
 
 const initialValues = {
   models: [],
 };
 
-const modelReduser = (state = initialValues, action) => {
+const resultReduser = (state = initialValues, action) => {
   switch (action.type) {
+    case GET_VALUES:
+      return { ...state, models: action.payload };
     // case FIND_MODEL:
     //   return { ...state, models: action.payload };
     // case DELETE_MOVIE:
@@ -19,4 +21,4 @@ const modelReduser = (state = initialValues, action) => {
   }
 };
 
-export default modelReduser;
+export default resultReduser;

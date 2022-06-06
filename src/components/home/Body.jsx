@@ -10,7 +10,6 @@ import img7 from "../images/img7.png";
 import Img8 from "../images/Img8.png";
 
 function Body() {
-  
   const [active, setActive] = useState(false);
   const goToFilter = () => {
     setActive(!active);
@@ -30,12 +29,14 @@ function Body() {
                     alt=""
                   />
                 </Link>
-                <img
-                  onClick={goToFilter}
-                  className="devices"
-                  src={img4}
-                  alt=""
-                />
+                <Link to="/filter">
+                  <img
+                    onClick={goToFilter}
+                    className="devices"
+                    src={img4}
+                    alt=""
+                  />
+                </Link>
               </div>
               <img onClick={goToFilter} className="devices" src={img2} alt="" />
               <img
