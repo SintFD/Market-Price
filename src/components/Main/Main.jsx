@@ -1,6 +1,6 @@
 import React from "react";
-import Home from "../Home/Home";
-import Filter from "../Filter/Filter";
+import Home from "../Home/Home.jsx";
+import Filter from "../Filter/Filter.jsx";
 import Result from "../result/Result";
 import { Route } from "react-router-dom";
 
