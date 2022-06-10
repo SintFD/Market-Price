@@ -1,7 +1,7 @@
 import React from "react";
-import Home from "./home/Home";
-import Filter from "./filter/Filter";
-import Result from "./result/Result";
+import Home from "../Home/Home";
+import Filter from "../Filter/Filter";
+import Result from "../result/Result";
 import { Route } from "react-router-dom";
 
 function Main() {

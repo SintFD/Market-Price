@@ -1,6 +1,5 @@
-import Header from "../home/Header";
 import "./Result.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { getDataSelector } from "../../redux-manager/Filter/selector";
 import { findModelSelector } from "../../redux-manager/result/selectors";
@@ -8,7 +7,6 @@ import { findModelSelector } from "../../redux-manager/result/selectors";
 function Result() {
   const allPhonesArr = useSelector(getDataSelector);
   let valuesFromFilter = useSelector(findModelSelector);
-  // useEffect(console.log(allPhonesArr))
   const [clicked, setCLicked] = useState(false);
   const changeState = () => {
     clicked
@@ -34,7 +32,6 @@ function Result() {
   };
   return (
     <div>
-      <Header />
       <div className="result__main-elements">
         <div className="result__main-btn-container">
           <button onClick={changeState} className="result__main-compare">

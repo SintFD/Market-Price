@@ -21,7 +21,10 @@ function Header() {
       <div className="container">
         <div className="flex-container">
           <Link className="header-link" to="/">
-            <div className="market-price"><div className="market">Market</div> <div className="price">Price</div></div>
+            <div className="market-price">
+              <div className="market">Market</div>{" "}
+              <div className="price">Price</div>
+            </div>
           </Link>
           <form className="header__form-flex" onSubmit={submiting}>
             <input

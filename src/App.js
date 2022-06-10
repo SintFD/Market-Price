@@ -1,13 +1,11 @@
 import React from "react";
-import { Route } from "react-router-dom";
-import Main from "./components/Main";
-
-import "./reset.css";
-
+import Main from "./components/Main/Main";
+import Header from "./components/Header/Header";
 
 function App() {
   return (
     <div className="app">
+      <Header />
       <Main />
     </div>
   );

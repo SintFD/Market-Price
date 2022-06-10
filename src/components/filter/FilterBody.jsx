@@ -10,7 +10,6 @@ function Body() {
 
   const changeValue = (e) => {
     dispatch(takeFilterValue(e.target.innerText));
-    // console.log(e.target.innerText);
   };
   const filterByValue = (e) => {
     dispatch(getValuesAction(e.target.value));

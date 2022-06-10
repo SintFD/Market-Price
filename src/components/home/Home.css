@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 .header {
-  background-color: black;
+  background-color: rgb(114, 114, 216);
   width: 100%;
   height: 50px;
 }
@@ -35,7 +35,7 @@
   padding: 0 5px 0 4px;
   background-color: orange;
   border-radius: 5px;
-  color: black;
+  color:  blueviolet;
 }
 .home__header-button {
   width: 70px;
@@ -78,7 +78,7 @@
   cursor: pointer;
   transition: 1s;
   padding: 5px;
-  border-radius: 20px;
+  border-radius: 25px;
 }
 .devices:hover {
   transform: scale(1.1);
@@ -89,7 +89,8 @@
   width: 315px;
 }
 .complect {
-  height: 301px;
+  height: 315px;
+  width: 305px;
 }
 .nout {
   width: 593px;
@@ -102,3 +103,7 @@
   width: 301px;
   height: 50px;
 } */
+
+.notebooks{
+  width: 315px;
+}
